@@ -173,14 +173,14 @@ function isMatch(changedFile: string, matchers: IMinimatch[]): boolean {
   core.debug(`    matching patterns against file ${changedFile}`);
   for (const matcher of matchers) {
     core.debug(`   - ${printPattern(matcher)}`);
-    if (!matcher.match(changedFile)) {
+    if (matcher.match(changedFile)) {
       core.debug(`   ${printPattern(matcher)} did not match`);
-      return false;
+      return true;
     }
   }
 
   core.debug(`   all patterns matched`);
-  return true;
+  return false;
 }
 
 // equivalent to "Array.some()" but expanded for debugging and clarity
