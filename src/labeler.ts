@@ -174,12 +174,12 @@ function isMatch(changedFile: string, matchers: IMinimatch[]): boolean {
   for (const matcher of matchers) {
     core.debug(`   - ${printPattern(matcher)}`);
     if (matcher.match(changedFile)) {
-      core.debug(`   ${printPattern(matcher)} did not match`);
+      core.debug(`   ${printPattern(matcher)} matched`);
       return true;
     }
   }
 
-  core.debug(`   all patterns matched`);
+  core.debug(`   all patterns did not match`);
   return false;
 }
 
